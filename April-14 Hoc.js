@@ -18,10 +18,14 @@ function App() {
 
 export default App;
 
+
+export default App;
+
 //ClickCounter.js
 
 import React, { Component } from 'react';
-import UpdatedComponent from './WithCounter';
+
+import WithCounter from './WithCounter';
 
 class ClickCounter extends Component {
   
@@ -41,15 +45,14 @@ class ClickCounter extends Component {
 
 console.log("ClickCounter File Loaded 📄");
 
-export default UpdatedComponent(ClickCounter); // HOC
-
+export default WithCounter(ClickCounter); // HOC
 
 //WithCounter.js
 
 import React from 'react';
 
-const UpdatedComponent = (OriginalComponent) => {
-  class NewComponent extends React.Component {
+const WithCounter = (WrappedComponent) => {
+  class WithCounter extends React.Component {
 
     constructor(props) {
         super(props);
@@ -68,7 +71,7 @@ const UpdatedComponent = (OriginalComponent) => {
 
     render() {
       console.log("NewComponent (HOC Wrapper) Render 🌀");
-      return <OriginalComponent 
+      return <WrappedComponent 
       count={this.state.count} 
       incrementCount={this.incrementCount}/>;
     }
@@ -76,17 +79,19 @@ const UpdatedComponent = (OriginalComponent) => {
 
   console.log("HOC is Wrapping the Component 🎁");
 
-  return NewComponent;
+  return WithCounter;
 };
 
 console.log("WithCounter File Loaded 🔄");
 
-export default UpdatedComponent;
+export default WithCounter;
+
 
 //HovweCounter.js
 
 import React, { Component } from 'react';
-import UpdatedComponent from './WithCounter';
+
+import WithCounter from './WithCounter';
 
 class HovweCounter extends Component {
   
@@ -106,6 +111,6 @@ class HovweCounter extends Component {
 
 console.log("📄 HovweCounter File Loaded");
 
-export default UpdatedComponent(HovweCounter);
+export default WithCounter(HovweCounter);
 
 
