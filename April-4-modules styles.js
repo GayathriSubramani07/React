@@ -22,7 +22,7 @@ export default App;
 
 //appStyle.css
 
-.error{
+.success{
     color: red;
 }
 
